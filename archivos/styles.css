@@ -328,3 +328,7 @@ footer {
     align-items: center;
   }
 }
+
+.mercadopago-button{
+  background-color: #8A2BE2 !important;
+}
