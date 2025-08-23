@@ -13,6 +13,7 @@ body {
   line-height: 1.6;
 }
 
+
 .container {
   width: 90%;
   max-width: 1200px;
@@ -38,7 +39,7 @@ header {
 .logo {
   font-size: 2rem;
   font-weight: 700;
-  color: #8A2BE2;
+  color: #FF69B4;
   letter-spacing: 2px;
 }
 
@@ -50,7 +51,7 @@ nav a {
 }
 
 nav a:hover {
-  color: #8A2BE2;
+  color: #FF69B4;
 }
 
 /* ===== Hero ===== */
@@ -62,7 +63,7 @@ nav a:hover {
 
 .hero h2 {
   font-size: 3rem;
-  color: #8A2BE2;
+  color: #FF69B4;
   margin-bottom: 1rem;
 }
 
@@ -73,7 +74,7 @@ nav a:hover {
 
 .btn {
   display: inline-block;
-  background-color: #8A2BE2;
+  background-color: #FF69B4;
   color: white;
   padding: 0.8rem 2rem;
   border-radius: 30px;
@@ -82,7 +83,7 @@ nav a:hover {
 }
 
 .btn:hover {
-  background-color: #8A2BE2;
+  background-color: #FF69B4;
 }
 
 /* ===== Productos (Lobby) ===== */
@@ -129,7 +130,7 @@ nav a:hover {
 }
 
 .producto p {
-  color: #8A2BE2;
+  color: #FF69B4;
   font-weight: bold;
   margin-bottom: 1rem;
 }
@@ -165,7 +166,7 @@ nav a:hover {
 }
 
 .catalogo-etiqueta {
-  background-color: #8A2BE2;
+  background-color: #FF69B4;
   color: white;
   font-size: 0.8rem;
   padding: 3px 8px;
@@ -264,12 +265,12 @@ nav a:hover {
 }
 
 .btn-comprar {
-    background-color: purple;
+    background-color: #FF69B4;
     color: white;
 }
 
 .btn-comprar:hover {
-    background-color: purple;
+    background-color: #FF69B4;
 }
 
 .btn-agregar {
@@ -283,7 +284,7 @@ nav a:hover {
 
 /* Etiqueta de producto */
 .etiqueta.nuevo {
-    background-color: purple;
+    background-color: #FF69B4;
     color: white;
     font-size: 0.9rem;
     padding: 4px 10px;
@@ -309,11 +310,11 @@ footer {
 .socials a {
   margin: 0 1rem;
   font-size: 1.5rem;
-  color: #8A2BE2;
+  color: #FF69B4;
 }
 
 .socials a:hover {
-  color: #8A2BE2;
+  color: #FF69B4;
 }
 
 /* ===== Responsive ===== */
@@ -330,5 +331,12 @@ footer {
 }
 
 .mercadopago-button{
-  background-color: #8A2BE2 !important;
+  background-color: #FF69B4 !important;
+}
+
+
+.imagen-logo{
+  width: 7% !important;
+  height: 7% !important;
+  padding-top: 2%;
 }
