@@ -1,8 +1,22 @@
 {
   "type": "module",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js"
+  },
   "dependencies": {
+    "cloudinary": "^1.41.3",
+    "dotenv": "^17.2.3",
     "express": "^5.1.0",
+    "express-handlebars": "^8.0.3",
     "mercadopago": "^2.8.0",
+    "mongoose": "^8.19.2",
+    "multer": "^2.0.2",
+    "multer-storage-cloudinary": "^4.0.0",
     "nodemailer": "^7.0.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
   }
 }

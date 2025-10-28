@@ -1,0 +1,21 @@
+<h1>Cargar producto</h1>
+{{#if error}}<p style="color:red">{{error}}</p>{{/if}}
+
+<form action="/products" method="post" enctype="multipart/form-data">
+  <label>Nombre *</label>
+  <input type="text" name="title" required value="{{old.title}}" />
+
+  <label>Descripción</label>
+  <textarea name="description">{{old.description}}</textarea>
+
+  <label>Precio *</label>
+  <input type="number" name="price" step="0.01" min="0" required value="{{old.price}}" />
+
+  <label>Categoría</label>
+  <input type="text" name="category" value="{{old.category}}" />
+
+  <label>Imagen (JPG/PNG/WebP, máx 5MB)</label>
+  <input type="file" name="image" accept="image/*" />
+
+  <button type="submit">Guardar</button>
+</form>
