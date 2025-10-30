@@ -1,5 +1,5 @@
 <h1>Productos</h1>
-<a href="/products/new">+ Nuevo</a>
+<a href="/products/new">+ Nuevo producto</a>
 
 <div class="grid">
   {{#each products}}
@@ -8,9 +8,13 @@
         <img src="{{this.imageUrl}}" alt="{{this.title}}" />
       {{/if}}
       <h3>{{this.title}}</h3>
-      {{#if this.description}}<p>{{this.description}}</p>{{/if}}
+      {{#if this.description}}
+        <p>{{this.description}}</p>
+      {{/if}}
       <strong>${{this.price}}</strong>
-      {{#if this.category}}<small>{{this.category}}</small>{{/if}}
+      {{#if this.category}}
+        <small>{{this.category}}</small>
+      {{/if}}
     </article>
   {{else}}
     <p>No hay productos aún.</p>

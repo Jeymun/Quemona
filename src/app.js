@@ -3,7 +3,7 @@ import { engine } from 'express-handlebars';
 import path from 'path';
 import dotenv from 'dotenv';
 import { connectDB } from './db.js';
-import { productsRouter } from './routes/products.router.js';
+import productsRouter from "./routes/products.router.js";
 
 dotenv.config();
 

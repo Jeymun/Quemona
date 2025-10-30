@@ -1,5 +1,8 @@
 <h1>Cargar producto</h1>
-{{#if error}}<p style="color:red">{{error}}</p>{{/if}}
+
+{{#if error}}
+  <p style="color:red">{{error}}</p>
+{{/if}}
 
 <form action="/products" method="post" enctype="multipart/form-data">
   <label>Nombre *</label>
@@ -14,7 +17,7 @@
   <label>Categoría</label>
   <input type="text" name="category" value="{{old.category}}" />
 
-  <label>Imagen (JPG/PNG/WebP, máx 5MB)</label>
+  <label>Imagen (JPG, PNG o WEBP)</label>
   <input type="file" name="image" accept="image/*" />
 
   <button type="submit">Guardar</button>
