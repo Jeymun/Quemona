@@ -3,20 +3,50 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quemona</title>
+  <title>Quemona - Ropa con actitud</title>
+
+  <!-- ✅ RUTA CORRECTA AL CSS (sirve desde /public/css) -->
   <link rel="stylesheet" href="/public/css/styles.css" />
+
+  <!-- ✅ FUENTES Y FAVICON -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/src/archivos/fotos/logo.jpg">
+
+  <!-- ✅ ICONOS FONT AWESOME -->
+  <script src="https://kit.fontawesome.com/yourkitcode.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
+  <!-- 🧱 HEADER -->
   <header>
-    <nav>
-      <a href="/">Inicio</a>
-      <a href="/products">Productos</a>
-      <a href="/products/new">Agregar producto</a>
-    </nav>
+    <div class="container header-container">
+      <img src="/public/logo.jpg" alt="logo" class="imagen-logo" />
+      <link rel="icon" type="image/png" href="/public/logo.jpg">
+      <h1 class="logo">QUEEMONA</h1>
+      <nav>
+        <a href="/">Inicio</a>
+        <a href="/products">Tienda</a>
+        <a href="#">Sobre nosotras</a>
+        <a href="#">Contacto</a>
+      </nav>
+    </div>
   </header>
 
+  <!-- 🔥 CONTENIDO DINÁMICO DE HANDLEBARS -->
   <main>
     {{{ body }}}
   </main>
+
+  <!-- 🦶 FOOTER -->
+  <footer>
+    <div class="container footer-container">
+      <p>&copy; 2025 Quemona. Todos los derechos reservados.</p>
+      <div class="socials">
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
