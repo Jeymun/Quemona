@@ -145,7 +145,7 @@ nav a:hover {
 
 /* ===== Catálogo (products/list.handlebars) ===== */
 .catalogo {
-  padding: 4rem 1rem;
+  padding: 3rem 1rem;
 }
 
 .catalogo h2 {
@@ -156,57 +156,82 @@ nav a:hover {
 }
 
 .catalogo-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 25px;
-  justify-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
+/* Cada producto */
 .catalogo-item {
+  flex: 1 1 calc(25% - 25px); /* ✅ 4 por fila con espacio */
+  max-width: 260px;
   background-color: #fff;
-  border-radius: 12px;
+  border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  max-width: 250px;
-  width: 100%;
   text-align: center;
 }
 
 .catalogo-item:hover {
-  transform: translateY(-5px);
+  transform: translateY(-4px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
+/* Imagen más pequeña y uniforme */
 .catalogo-item img {
   width: 100%;
-  height: 200px;
+  height: 180px; /* 🔹 Tamaño reducido */
   object-fit: cover;
-  display: block;
+  border-bottom: 1px solid #eee;
 }
 
+/* Info del producto */
 .catalogo-info {
-  padding: 15px;
+  padding: 10px 12px;
 }
 
 .catalogo-nombre {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: bold;
   color: #333;
-  margin: 8px 0;
+  margin: 8px 0 4px;
 }
 
 .catalogo-precio {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: #00a650;
   font-weight: bold;
-  margin-bottom: 5px;
 }
 
 .catalogo-categoria {
-  font-size: 0.85rem;
-  color: #777;
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: 3px;
 }
+
+/* ===== Responsive ===== */
+@media (max-width: 992px) {
+  .catalogo-item {
+    flex: 1 1 calc(33.33% - 25px); /* 3 por fila */
+  }
+}
+
+@media (max-width: 768px) {
+  .catalogo-item {
+    flex: 1 1 calc(50% - 25px); /* 2 por fila */
+  }
+}
+
+@media (max-width: 480px) {
+  .catalogo-item {
+    flex: 1 1 100%; /* 1 por fila */
+  }
+}
+
 
 /* ===== Footer ===== */
 footer {
