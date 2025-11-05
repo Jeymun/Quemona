@@ -37,8 +37,15 @@ app.get("/upload", (req, res) => {
   res.render("products/add");
 });
 
-// 🏠 Home (redirige a productos)
-app.get("/", (_req, res) => res.redirect("/products"));
+app.get('/', (_req, res) => {
+  res.render('home');
+});
+
+app.get('/contacto', (_req, res) => {
+  res.render('contacto');
+});
+
+
 
 // 🚀 Inicializar servidor y conexión DB
 const PORT = process.env.PORT || 3000;

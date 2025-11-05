@@ -1,22 +1,31 @@
-<h1>Productos</h1>
-<a href="/products/new?key=valengugi123">+ Nuevo producto</a>
+<section class="productos container">
+  <h2>Catálogo de productos</h2>
 
-<div class="grid">
-  {{#each products}}
-    <article class="card">
-      {{#if this.imageUrl}}
-        <img src="{{this.imageUrl}}" alt="{{this.title}}" />
-      {{/if}}
-      <h3>{{this.title}}</h3>
-      {{#if this.description}}
-        <p>{{this.description}}</p>
-      {{/if}}
-      <strong>${{this.price}}</strong>
-      {{#if this.category}}
-        <small>{{this.category}}</small>
-      {{/if}}
-    </article>
+  {{#if products.length}}
+    <div class="grid-catalogo">
+      {{#each products}}
+        <article class="producto-card">
+          {{#if this.imageUrl}}
+            <img src="{{this.imageUrl}}" alt="{{this.title}}" class="producto-img" />
+          {{/if}}
+
+          <div class="producto-info">
+            <h3 class="producto-titulo">{{this.title}}</h3>
+
+            {{#if this.description}}
+              <p class="producto-descripcion">{{this.description}}</p>
+            {{/if}}
+
+            <strong class="producto-precio">${{this.price}}</strong>
+
+            {{#if this.category}}
+              <small class="producto-categoria">{{this.category}}</small>
+            {{/if}}
+          </div>
+        </article>
+      {{/each}}
+    </div>
   {{else}}
-    <p>No hay productos aún.</p>
-  {{/each}}
-</div>
+    <p class="no-products">No hay productos aún.</p>
+  {{/if}}
+</section>
