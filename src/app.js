@@ -7,6 +7,12 @@ import productsRouter from "./routes/products.router.js";
 
 dotenv.config();
 
+// 👇 Agregá esta línea justo después de dotenv.config()
+console.log(
+  "🔑 Mercado Pago Token:",
+  process.env.MERCADOPAGO_ACCESS_TOKEN ? "Cargado ✅" : "No encontrado ❌"
+);
+
 const app = express();
 
 // 📦 Handlebars
@@ -37,14 +43,17 @@ app.get("/upload", (req, res) => {
   res.render("products/add");
 });
 
-app.get('/', (_req, res) => {
-  res.render('home');
+app.get("/", (_req, res) => {
+  res.render("home");
 });
 
-app.get('/contacto', (_req, res) => {
-  res.render('contacto');
+app.get("/contacto", (_req, res) => {
+  res.render("contacto");
 });
 
+app.get("/success", (req, res) => res.render("success"));
+app.get("/failure", (req, res) => res.render("failure"));
+app.get("/pending", (req, res) => res.render("pending"));
 
 
 // 🚀 Inicializar servidor y conexión DB

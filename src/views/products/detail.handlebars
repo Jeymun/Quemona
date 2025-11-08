@@ -1,0 +1,36 @@
+<section class="detalle-producto container">
+  <div class="detalle-img">
+    <img src="{{product.imageUrl}}" alt="{{product.title}}" />
+  </div>
+
+  <div class="detalle-info">
+    <h2>{{product.title}}</h2>
+
+    {{#if product.description}}
+      <p>{{product.description}}</p>
+    {{/if}}
+
+    <strong class="precio">${{product.price}}</strong>
+
+    {{#if product.category}}
+      <small class="categoria">Categoría: {{product.category}}</small>
+    {{/if}}
+
+    <!-- 🛒 Botón de compra con Mercado Pago -->
+    <form action="/products/buy/{{product._id}}" method="POST">
+      <button type="submit" class="btn btn-comprar">Comprar con Mercado Pago</button>
+    </form>
+
+    <!-- 💬 Botón para WhatsApp -->
+    <a
+      href="https://wa.me/541123486213?text=Hola!%20Quiero%20consultar%20por%20el%20producto%20{{product.title}}%20de%20la%20tienda%20Quemona."
+      class="btn btn-whatsapp"
+      target="_blank"
+    >
+      Consultar por WhatsApp
+    </a>
+
+    <!-- 🔙 Volver al catálogo -->
+    <a href="/products" class="btn btn-volver">Volver al catálogo</a>
+  </div>
+</section>

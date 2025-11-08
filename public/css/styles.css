@@ -406,4 +406,126 @@ footer {
   font-size: 1rem;
 }
 
+.detalle-producto {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  max-width: 1000px;
+  margin: 3rem auto;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 2rem;
+  align-items: center;
+}
+
+.detalle-img img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.detalle-info {
+  flex: 1;
+  text-align: left;
+}
+
+.detalle-info h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.detalle-info p {
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.precio {
+  font-size: 1.5rem;
+  color: #00a650;
+  font-weight: bold;
+}
+
+.btn-comprar {
+  background-color: #FF69B4;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-comprar:hover {
+  background-color: #ff4da6;
+}
+
+.btn-volver {
+  background-color: #ccc;
+  color: #333;
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-volver:hover {
+  background-color: #bbb;
+}
+
+.btn-whatsapp {
+  background-color: #25D366;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 10px;
+  margin-right: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-whatsapp:hover {
+  background-color: #1ebe5c;
+}
+
+.mensaje-pago {
+  text-align: center;
+  padding: 4rem 1rem;
+}
+
+.mensaje-pago h1 {
+  color: #FF69B4;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.mensaje-pago p {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.mensaje-pago .btn {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  background-color: #FF69B4;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.mensaje-pago .btn:hover {
+  background-color: #ff4da6;
+}
+
+
+
 /* ==*

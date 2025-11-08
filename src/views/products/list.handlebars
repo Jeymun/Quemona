@@ -5,8 +5,11 @@
     <div class="grid-catalogo">
       {{#each products}}
         <article class="producto-card">
+
           {{#if this.imageUrl}}
-            <img src="{{this.imageUrl}}" alt="{{this.title}}" class="producto-img" />
+            <a href="/products/{{this._id}}">
+              <img src="{{this.imageUrl}}" alt="{{this.title}}" class="producto-img" />
+            </a>
           {{/if}}
 
           <div class="producto-info">
