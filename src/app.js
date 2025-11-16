@@ -56,6 +56,7 @@ app.get("/failure", (req, res) => res.render("failure"));
 app.get("/pending", (req, res) => res.render("pending"));
 
 
+
 // 🚀 Inicializar servidor y conexión DB
 const PORT = process.env.PORT || 3000;
 await connectDB(process.env.MONGODB_URI);
