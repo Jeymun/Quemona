@@ -1,22 +1,5 @@
 import multer from "multer";
-import { CloudinaryStorage } from "multer-storage-cloudinary";
-import { v2 as cloudinary } from "cloudinary";
-import dotenv from "dotenv";
 
-dotenv.config();
-
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,  // 👈 así se lee del .env
-  api_key: process.env.CLOUDINARY_API_KEY,        // 👈 así también
-  api_secret: process.env.CLOUDINARY_API_SECRET,  // 👈 y este igual
+export const upload = multer({
+  dest: "uploads/",
 });
-
-const storage = new CloudinaryStorage({
-  cloudinary,
-  params: {
-    folder: "quemona/products",
-    allowed_formats: ["jpg", "png", "jpeg", "webp"],
-  },
-});
-
-export const upload = multer({ storage });

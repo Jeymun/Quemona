@@ -10,10 +10,10 @@
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
     "express-handlebars": "^8.0.3",
+    "express-session": "^1.19.0",
     "mercadopago": "^2.10.0",
     "mongoose": "^8.19.2",
     "multer": "^2.0.2",
-    "multer-storage-cloudinary": "^4.0.0",
     "nodemailer": "^7.0.5"
   },
   "devDependencies": {
