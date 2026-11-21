@@ -26,7 +26,9 @@ function isAdmin(req, res, next) {
    FORM CREAR PRODUCTO
 ================================= */
 router.get("/new", isAdmin, (req, res) => {
-  res.render("products/add");
+  res.render("products/add", {
+    isAdmin: Boolean(req.session?.isAdmin),
+  });
 });
 
 /* ==============================
@@ -67,12 +69,12 @@ router.post("/", isAdmin, upload.single("image"), async (req, res) => {
     });
 
     res.redirect("/products");
-
   } catch (error) {
     console.error("❌ Error al crear producto:", error);
     res.status(400).render("products/add", {
       error: error.message,
       old: req.body,
+      isAdmin: Boolean(req.session?.isAdmin),
     });
   }
 });
@@ -83,10 +85,29 @@ router.post("/", isAdmin, upload.single("image"), async (req, res) => {
 router.get("/", async (req, res) => {
   try {
     const products = await Product.find().lean();
-    res.render("products/list", { products });
+    res.render("products/list", {
+      products,
+      isAdmin: Boolean(req.session?.isAdmin),
+    });
   } catch (error) {
     console.error("❌ Error al obtener productos:", error);
     res.status(500).send("Error al cargar productos");
+  }
+});
+
+/* ==============================
+   ELIMINAR PRODUCTO POR ID
+================================= */
+router.post("/:id/delete", isAdmin, async (req, res) => {
+  try {
+    const deleted = await Product.findByIdAndDelete(req.params.id);
+    if (!deleted) {
+      return res.status(404).send("Producto no encontrado");
+    }
+    res.redirect("/products");
+  } catch (error) {
+    console.error("❌ Error al eliminar producto:", error);
+    res.status(500).send("Error al eliminar el producto");
   }
 });
 
@@ -98,7 +119,10 @@ router.get("/:id", async (req, res) => {
     const product = await Product.findById(req.params.id).lean();
     if (!product) return res.status(404).send("Producto no encontrado");
 
-    res.render("products/detail", { product });
+    res.render("products/detail", {
+      product,
+      isAdmin: Boolean(req.session?.isAdmin),
+    });
   } catch (error) {
     console.error("❌ Error al obtener producto:", error);
     res.status(500).send("Error al obtener el producto");
@@ -153,22 +177,6 @@ router.post("/buy/:id", async (req, res) => {
   } catch (error) {
     console.error("❌ Error creando preferencia:", error.cause || error);
     res.status(500).send("Error al iniciar pago");
-  }
-});
-
-/* ==============================
-   ELIMINAR PRODUCTO POR ID
-================================= */
-router.post("/:id/delete", isAdmin, async (req, res) => {
-  try {
-    const deleted = await Product.findByIdAndDelete(req.params.id);
-    if (!deleted) {
-      return res.status(404).send("Producto no encontrado");
-    }
-    res.redirect("/products");
-  } catch (error) {
-    console.error("❌ Error al eliminar producto:", error);
-    res.status(500).send("Error al eliminar el producto");
   }
 });
 
