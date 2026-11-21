@@ -1,0 +1,29 @@
+<section class="contacto container">
+  <h2>Contacto</h2>
+  <p>¿Tenés alguna consulta sobre talles, envíos o pedidos? Escribinos y te respondemos a la brevedad.</p>
+
+  {{#if enviado}}
+    <p style="color: #00a650; font-weight: bold; margin-bottom: 1.5rem;">
+      ✅ ¡Mensaje enviado! Nos pondremos en contacto pronto.
+    </p>
+  {{/if}}
+
+  <form action="/contacto" method="POST" class="contacto-form">
+    <input type="text" name="nombre" placeholder="Tu nombre" required />
+    <input type="email" name="email" placeholder="Tu email" required />
+    <textarea name="mensaje" rows="5" placeholder="Escribí tu consulta..." required></textarea>
+    <button type="submit" class="btn">Enviar mensaje</button>
+  </form>
+
+  <div style="margin-top: 2rem;">
+    <p>También podés hablarnos directo por WhatsApp:</p>
+    <a
+      href="https://wa.me/5491123486213?text=Hola!%20Tengo%20una%20consulta%20sobre%20la%20tienda."
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn btn-wsp"
+    >
+      Escribir por WhatsApp
+    </a>
+  </div>
+</section>

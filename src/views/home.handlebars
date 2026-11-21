@@ -5,3 +5,25 @@
     <a href="/products" class="btn">Entrar a la tienda</a>
   </div>
 </section>
+
+<section class="productos container">
+  <h3>Artículos destacados</h3>
+
+  {{#if featuredProducts.length}}
+    <div class="grid">
+      {{#each featuredProducts}}
+        <article class="producto">
+          <a href="/products/{{this._id}}" style="text-decoration: none; color: inherit;">
+            {{#if this.imageUrl}}
+              <img src="{{this.imageUrl}}" alt="{{this.title}}" />
+            {{/if}}
+            <h4>{{this.title}}</h4>
+            <p>${{this.price}}</p>
+          </a>
+        </article>
+      {{/each}}
+    </div>
+  {{else}}
+    <p style="color: #666;">Todavía no hay productos cargados para destacar.</p>
+  {{/if}}
+</section>

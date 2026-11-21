@@ -8,14 +8,14 @@ import session from "express-session";
 import adminRouter from "./routes/admin.router.js";
 import { connectDB } from "./db.js";
 import productsRouter from "./routes/products.router.js";
+import Product from "./models/Product.js";
 import { v2 as cloudinary } from "cloudinary";
+
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
-
-dotenv.config();
 
 console.log(
   "🔑 Mercado Pago Token:",
@@ -38,11 +38,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // 🔐 SESSION (DESPUÉS DE PARSERS)
-app.use(session({
-  secret: process.env.SESSION_SECRET || "supersecret",
-  resave: false,
-  saveUninitialized: false,
-}));
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET || "supersecret",
+    resave: false,
+    saveUninitialized: false,
+  })
+);
 
 // 🖼️ Archivos estáticos
 app.use("/public", express.static(path.resolve("public")));
@@ -59,12 +61,28 @@ app.use("/products", productsRouter);
    RUTAS GENERALES
 ================================= */
 
-app.get("/", (_req, res) => {
-  res.render("home");
+app.get("/", async (_req, res) => {
+  try {
+    const allProducts = await Product.find().lean();
+    const featuredProducts = allProducts
+      .sort(() => Math.random() - 0.5)
+      .slice(0, 3);
+
+    res.render("home", { featuredProducts });
+  } catch (error) {
+    console.error("❌ Error al cargar productos destacados:", error);
+    res.render("home", { featuredProducts: [] });
+  }
 });
 
 app.get("/contacto", (_req, res) => {
   res.render("contacto");
+});
+
+app.post("/contacto", (req, res) => {
+  const { nombre, email, mensaje } = req.body;
+  console.log("📩 Nuevo mensaje de contacto:", { nombre, email, mensaje });
+  res.render("contacto", { enviado: true });
 });
 
 app.get("/success", (_req, res) => res.render("success"));
@@ -82,4 +100,3 @@ await connectDB(process.env.MONGODB_URI);
 app.listen(PORT, () => {
   console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
 });
-

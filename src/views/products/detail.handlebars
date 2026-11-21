@@ -17,11 +17,10 @@
     {{/if}}
 
     <div class="detalle-acciones">
-      <!-- 💳 Botón Mercado Pago (ajusta la ruta/endpoint según tu backend) -->
       <!-- 💳 Botón Mercado Pago -->
-<form action="/products/buy/{{product._id}}" method="POST">
-  <button type="submit" class="btn btn-mp">Comprar con Mercado Pago</button>
-</form>
+      <form action="/products/buy/{{product._id}}" method="POST">
+        <button type="submit" class="btn btn-mp">Comprar con Mercado Pago</button>
+      </form>
 
       <!-- 💬 Botón WhatsApp -->
       <a
@@ -36,17 +35,15 @@
 
     <!-- 🔙 Volver al catálogo -->
     <a href="/products" class="btn btn-volver">Volver al catálogo</a>
-  </div>
-<div>
-  {{#if isAdmin}}
-  <form
-    action="/products/{{product._id}}/delete"
-    method="POST"
-    onsubmit="return confirm('¿Seguro que quieres eliminar este producto?');"
-  >
-    <button type="submit" class="btn btn-eliminar">Eliminar producto</button>
-  </form>
-{{/if}}
 
-</div>
+    {{#if isAdmin}}
+      <form
+        action="/products/{{product._id}}/delete"
+        method="POST"
+        onsubmit="return confirm('¿Seguro que quieres eliminar este producto?');"
+      >
+        <button type="submit" class="btn btn-eliminar">Eliminar producto</button>
+      </form>
+    {{/if}}
+  </div>
 </section>

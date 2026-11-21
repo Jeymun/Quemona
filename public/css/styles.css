@@ -6,17 +6,29 @@
 }
 
 /* ===== Base ===== */
+html,
+body {
+  height: 100%;
+}
+
 body {
   font-family: 'Montserrat', sans-serif;
   color: #1a1a1a;
   background-color: #fff;
   line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1 0 auto;
 }
 
 .container {
   width: 90%;
   max-width: 1200px;
-  margin: auto;
+  margin: 0 auto;
 }
 
 /* ===== Header ===== */
@@ -166,7 +178,7 @@ nav a:hover {
 
 /* Cada producto */
 .catalogo-item {
-  flex: 1 1 calc(25% - 25px); /* ✅ 4 por fila con espacio */
+  flex: 1 1 calc(25% - 25px);
   max-width: 260px;
   background-color: #fff;
   border-radius: 10px;
@@ -184,7 +196,7 @@ nav a:hover {
 /* Imagen más pequeña y uniforme */
 .catalogo-item img {
   width: 100%;
-  height: 180px; /* 🔹 Tamaño reducido */
+  height: 180px;
   object-fit: cover;
   border-bottom: 1px solid #eee;
 }
@@ -216,28 +228,29 @@ nav a:hover {
 /* ===== Responsive ===== */
 @media (max-width: 992px) {
   .catalogo-item {
-    flex: 1 1 calc(33.33% - 25px); /* 3 por fila */
+    flex: 1 1 calc(33.33% - 25px);
   }
 }
 
 @media (max-width: 768px) {
   .catalogo-item {
-    flex: 1 1 calc(50% - 25px); /* 2 por fila */
+    flex: 1 1 calc(50% - 25px);
   }
 }
 
 @media (max-width: 480px) {
   .catalogo-item {
-    flex: 1 1 100%; /* 1 por fila */
+    flex: 1 1 100%;
   }
 }
-
 
 /* ===== Footer ===== */
 footer {
   background-color: #f5f5f5;
   padding: 2rem 0;
   text-align: center;
+  margin-top: auto;
+  flex-shrink: 0;
 }
 
 .footer-container {
@@ -330,6 +343,7 @@ footer {
 .contacto-form .btn:hover {
   background-color: #ff4da6;
 }
+
 /* ===== Catálogo de productos (products/list.handlebars) ===== */
 .grid-catalogo {
   display: flex;
@@ -342,7 +356,7 @@ footer {
 
 /* Cada tarjeta de producto */
 .producto-card {
-  flex: 1 1 calc(25% - 25px); /* ✅ 4 por fila */
+  flex: 1 1 calc(25% - 25px);
   max-width: 260px;
   background-color: #fff;
   border: 1px solid #eee;
@@ -361,7 +375,7 @@ footer {
 /* Imagen */
 .producto-img {
   width: 100%;
-  height: 180px; /* 🔹 Tamaño más compacto */
+  height: 180px;
   object-fit: cover;
   border-bottom: 1px solid #eee;
   display: block;
@@ -526,6 +540,48 @@ footer {
   background-color: #ff4da6;
 }
 
+.detalle-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
 
+.detalle-acciones form {
+  margin: 0;
+}
 
-/* ==*
+/* Botón Mercado Pago */
+.btn-mp {
+  background-color: #009ee3;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-mp:hover {
+  background-color: #29b6f6;
+}
+
+/* Botón WhatsApp */
+.btn-wsp {
+  background-color: #1ea952;
+  color: #fff;
+}
+
+.btn-wsp:hover {
+  background-color: #25d366;
+}
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+
+.brand-link:hover .logo {
+  opacity: 0.85;
+}
