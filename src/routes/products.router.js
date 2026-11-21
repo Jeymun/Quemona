@@ -156,4 +156,20 @@ router.post("/buy/:id", async (req, res) => {
   }
 });
 
+/* ==============================
+   ELIMINAR PRODUCTO POR ID
+================================= */
+router.post("/:id/delete", isAdmin, async (req, res) => {
+  try {
+    const deleted = await Product.findByIdAndDelete(req.params.id);
+    if (!deleted) {
+      return res.status(404).send("Producto no encontrado");
+    }
+    res.redirect("/products");
+  } catch (error) {
+    console.error("❌ Error al eliminar producto:", error);
+    res.status(500).send("Error al eliminar el producto");
+  }
+});
+
 export default router;
