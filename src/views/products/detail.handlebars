@@ -37,4 +37,16 @@
     <!-- 🔙 Volver al catálogo -->
     <a href="/products" class="btn btn-volver">Volver al catálogo</a>
   </div>
+<div>
+  {{#if isAdmin}}
+  <form
+    action="/products/{{product._id}}/delete"
+    method="POST"
+    onsubmit="return confirm('¿Seguro que quieres eliminar este producto?');"
+  >
+    <button type="submit" class="btn btn-eliminar">Eliminar producto</button>
+  </form>
+{{/if}}
+
+</div>
 </section>
