@@ -122,33 +122,36 @@ router.post("/buy/:id", async (req, res) => {
     const product = await Product.findById(req.params.id).lean();
     if (!product) return res.status(404).send("Producto no encontrado");
 
-    const preference = new Preference(client);
+    const mpClient = new MercadoPagoConfig({
+      accessToken: process.env.MERCADOPAGO_ACCESS_TOKEN,
+    });
+    const preference = new Preference(mpClient);
+
+    const item = {
+      id: product._id.toString(),
+      title: product.title,
+      quantity: 1,
+      unit_price: Number(product.price),
+      currency_id: "ARS",
+      ...(product.imageUrl ? { picture_url: product.imageUrl } : {}),
+    };
 
     const response = await preference.create({
       body: {
-        items: [
-          {
-            id: product._id.toString(),
-            title: product.title,
-            quantity: 1,
-            unit_price: Number(product.price),
-            currency_id: "ARS",
-            picture_url: product.imageUrl,
-          },
-        ],
-        back_urls: {
-          success: "https://quemona.onrender.com/success",
-          failure: "https://quemona.onrender.com/failure",
-          pending: "https://quemona.onrender.com/pending",
-        },
-        auto_return: "approved",
+        items: [item],
+        // Prueba comentando auto_return si te da error de validación
+        // back_urls: {
+        //   success: "https://quemona.onrender.com/success",
+        //   failure: "https://quemona.onrender.com/failure",
+        //   pending: "https://quemona.onrender.com/pending",
+        // },
+        // auto_return: "approved",
       },
     });
 
     res.redirect(response.init_point);
-
   } catch (error) {
-    console.error("❌ Error creando preferencia:", error);
+    console.error("❌ Error creando preferencia:", error.cause || error);
     res.status(500).send("Error al iniciar pago");
   }
 });

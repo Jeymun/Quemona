@@ -16,7 +16,23 @@
       <small class="categoria">Categoría: {{product.category}}</small>
     {{/if}}
 
-   
+    <div class="detalle-acciones">
+      <!-- 💳 Botón Mercado Pago (ajusta la ruta/endpoint según tu backend) -->
+      <!-- 💳 Botón Mercado Pago -->
+<form action="/products/buy/{{product._id}}" method="POST">
+  <button type="submit" class="btn btn-mp">Comprar con Mercado Pago</button>
+</form>
+
+      <!-- 💬 Botón WhatsApp -->
+      <a
+        href="https://wa.me/5491123486213?text=Hola!%20Me%20interesa%20el%20producto%20%22{{product.title}}%22%20(%24{{product.price}})."
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-wsp"
+      >
+        Consultar por WhatsApp
+      </a>
+    </div>
 
     <!-- 🔙 Volver al catálogo -->
     <a href="/products" class="btn btn-volver">Volver al catálogo</a>
